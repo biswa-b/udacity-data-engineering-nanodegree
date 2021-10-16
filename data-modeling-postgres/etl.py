@@ -7,7 +7,9 @@ from sql_queries import *
 
 def process_song_file(cur, filepath):
     """
-    Extract a single sing file and load the entries for artist and song tables
+    - Loads a single song file
+    - Inserts an entry to the artist table
+    - Inserts an entry to the song table
     
     Args:
         cur: active cursor
@@ -36,7 +38,12 @@ def process_song_file(cur, filepath):
  
 def process_log_file(cur, filepath):
     """
-    Extract a single log file and load the entries for time, user & songplay tables
+    - Extract a single log file 
+    - Converts timestamp to appropriate formats
+    - Inserts entries to the time table
+    - Inserts entries to the user table
+    - Fetches song_id & artist_id for each log entry
+    - Inserts songplay records
     
     Args:
         cur: active cursor
@@ -102,7 +109,8 @@ def process_log_file(cur, filepath):
 
 def process_data(cur, conn, filepath, func):
     """
-    Process each file in the given folder with the appropriate function
+    - Browse the given directory and all its subdirectories for json files
+    - Apply the given function to each of the file in the directory
     
     Args:
         cur: active cursor
@@ -130,7 +138,12 @@ def process_data(cur, conn, filepath, func):
 
 def main():
     """
-    Main driver program
+    - Main driver program
+    - Open a database connection with the sparkify database
+    - Get a cursor
+    - Process all the files in the song folder
+    - Process all the files in the logs folder
+    - Close the connection
     """
     conn = psycopg2.connect("host=127.0.0.1 dbname=sparkifydb user=student password=student")
     cur = conn.cursor()
