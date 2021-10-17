@@ -17,7 +17,7 @@ as well as the ETL pipeline that transfers data from files in two local director
 - Python3
 - psycopg2
 - PostGreSQL
-- iPython notebooks
+- IPython
 
 ## Dataset
 
