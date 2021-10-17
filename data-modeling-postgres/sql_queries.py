@@ -11,20 +11,27 @@ time_table_drop = "DROP TABLE IF EXISTS time;"
 songplay_table_create = ("""
 CREATE TABLE songplays (
     songplay_id SERIAL PRIMARY KEY,
-    start_time TIMESTAMP REFERENCES time(start_time), 
-    user_id INT REFERENCES users(user_id), 
+    start_time TIMESTAMP NOT NULL, 
+    user_id INT NOT NULL, 
     level VARCHAR(100), 
     song_id VARCHAR(200) REFERENCES songs(song_id), 
     artist_id VARCHAR(200) REFERENCES artists(artist_id), 
     session_id INT, 
     location TEXT, 
-    user_agent TEXT);
+    user_agent TEXT,
+    CONSTRAINT FK_SONGPLAYS_START_TIME FOREIGN KEY(start_time) 
+        REFERENCES time(start_time)
+        ON DELETE CASCADE,
+    CONSTRAINT FK_SONGPLAYS_USER_ID FOREIGN KEY(user_id) 
+        REFERENCES users(user_id)
+        ON DELETE CASCADE
+    );
 """)
 
 user_table_create = ("""
 CREATE TABLE users (
     user_id INT PRIMARY KEY, 
-    first_name VARCHAR(100), 
+    first_name VARCHAR(100) NOT NULL, 
     last_name VARCHAR(100), 
     gender VARCHAR(5), 
     level VARCHAR(100));
@@ -33,16 +40,16 @@ CREATE TABLE users (
 song_table_create = ("""
 CREATE TABLE songs (
     song_id VARCHAR(200) PRIMARY KEY, 
-    title TEXT, 
-    artist_id VARCHAR(200) REFERENCES artists(artist_id), 
+    title TEXT NOT NULL, 
+    artist_id VARCHAR(200) NOT NULL REFERENCES artists(artist_id), 
     year INT, 
-    duration NUMERIC);
+    duration NUMERIC NOT NULL);
 """)
 
 artist_table_create = ("""
 CREATE TABLE artists (
     artist_id VARCHAR(200) PRIMARY KEY, 
-    name TEXT, 
+    name TEXT NOT NULL, 
     location TEXT, 
     latitude NUMERIC, 
     longitude NUMERIC);
@@ -70,7 +77,7 @@ VALUES (%s,%s,%s,%s,%s,%s,%s,%s);
 user_table_insert = ("""
 INSERT INTO users (user_id, first_name, last_name, gender, level) 
 VALUES (%s,%s,%s,%s,%s)
-ON CONFLICT (user_id) DO NOTHING;
+ON CONFLICT (user_id) DO UPDATE SET level=EXCLUDED.level;
 """)
 
 song_table_insert = ("""
