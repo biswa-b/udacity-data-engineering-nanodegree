@@ -1,5 +1,0 @@
-python3 create_tables.py 
-psql -h 127.0.0.1 -d sparkifydb -U student
-
-\dt
-\q
