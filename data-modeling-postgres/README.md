@@ -71,7 +71,7 @@ Using the song and log datasets, a star schema optimized for queries on song pla
 Clone the repository using
 
 ```sh
-git clone https://github.com/biswa-b/udacity-data-engineering-nanodegree.git
+git clone https://github.com/biswa-b/udacity-data-engineering-nanodegree
 ```
 
 ### Software Prerequisites
