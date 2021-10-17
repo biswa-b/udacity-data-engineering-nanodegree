@@ -46,3 +46,54 @@ Using the song and log datasets, a star schema optimized for queries on song pla
 
 ![Entity Relationship Diagram](./images/erd_diagram.png)
 
+## Directory Structure
+
+```
+.
+├── /
+│   ├── data/ (contains the JSON logs)
+│   │   ├── log_data/
+│   │   │   └── ....... (contains playback logs)
+│   │   ├── song_data/
+│   │   │   └── ....... (contains song logs)
+│   ├── images/ (contains relevant images)
+│   ├── etl.ipynb (python notebook to analyse the etl process)
+│   ├── test.ipynb (python notebook to test the data inserted)
+│   ├── README.md (Readme file)
+│   ├── create_tables.py (Resets the database by dropping & recreating the tables)
+│   ├── etl.py (Loads data from song_data and log_data and inserts into the database)
+│   └── sql_queries.py (Contains SQL queries for loading & ETL)
+└── README.md (The main readme)
+```
+
+## Setting up
+
+Clone the repository using
+
+```sh
+git clone https://github.com/biswa-b/udacity-data-engineering-nanodegree.git
+```
+
+### Software Prerequisites
+
+- Python 3.*
+- PostgreSQL
+- psycopg2
+- IPython
+
+### Steps
+
+- Run `create_tables.py` to reset the database
+
+   ```python
+   python3 create_tables.py
+   ```
+
+- Next, run the ETL process in `etl.py` and load the data
+
+   ```python
+   python3 etl.py
+   ```
+
+- Check if the data has been loaded in the database by running the queries in `test.ipynb`
+
