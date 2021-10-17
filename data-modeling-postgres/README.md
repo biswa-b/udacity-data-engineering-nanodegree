@@ -83,13 +83,13 @@ git clone https://github.com/biswa-b/udacity-data-engineering-nanodegree
 
 ### Steps
 
-- Run `create_tables.py` to reset the database
+- Initialize/Reset the database
 
    ```python
    python3 create_tables.py
    ```
 
-- Next, run the ETL process in `etl.py` and load the data
+- Next, run the ETL process
 
    ```python
    python3 etl.py
