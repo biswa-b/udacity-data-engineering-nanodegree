@@ -38,6 +38,7 @@ The following ERD depicts the data model. The three tables show are optimized fo
 │   ├── event_data/ (contains the CSV logs)
 │   ├── images/ (contains relevant images)
 │   ├── Project_1B_ Project_Template.ipynb (python notebook to analyse the etl process)
+|   └── README.md (this README)
 └── README.md (The main readme)
 ```
 
