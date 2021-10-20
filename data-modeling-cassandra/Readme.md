@@ -58,9 +58,9 @@ git clone https://github.com/biswa-b/udacity-data-engineering-nanodegree
 
 ### Steps
 
-- Run the ETL queries in part I of `Project_1B_ Project_Template.ipynb` to pre-process the files.
+- Run the ETL queries in part I of `Project_1B_ETL_Cassandra.ipynb` to pre-process the files.
 - `event_datafile_new.csv` will be created
 - Next, run the ETL process and create each table one by one. 
-- Use the sample queries in `Project_1B_ Project_Template.ipynb` to query the data
+- Use the sample queries in `Project_1B_ETL_Cassandra.ipynb` to query the data
 
 
